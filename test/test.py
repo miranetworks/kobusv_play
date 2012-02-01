@@ -3,10 +3,11 @@
 import random
 import unittest
 import sys
+import xmlrunner
 sys.path.append('../src/')
 import number_play
 
-class TestSequenceFunctions(unittest.TestCase):
+class MiscTests(unittest.TestCase):
 
     def setUp(self):
         self.seq = range(10)
@@ -31,11 +32,24 @@ class TestSequenceFunctions(unittest.TestCase):
             self.assertTrue(element in self.seq)
 
     def testFail(self):
-        self.failIf(False, 'test failures')
+        self.failIf(True, 'test a failure')
 
     def test_add_them(self):
         self.assertEqual(10, number_play.add_them(7, 3))
         self.assertEqual(11, number_play.add_them(-7, 18))
 
-if __name__ == '__main__':
+def run_tests_1():
     unittest.main()
+
+def run_tests_2():
+    suite = unittest.TestLoader().loadTestsFromTestCase(MiscTests)
+    unittest.TextTestRunner(verbosity=1).run(suite)
+
+def run_tests_3():
+    suite = unittest.TestLoader().loadTestsFromTestCase(MiscTests)
+    #runner = xmlrunner.XMLTestRunner(sys.stdout)
+    runner = xmlrunner.XMLTestRunner('./output/')
+    runner.run(suite)
+
+if __name__ == '__main__':
+    run_tests_3()
