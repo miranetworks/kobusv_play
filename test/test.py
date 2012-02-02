@@ -3,7 +3,6 @@
 import random
 import unittest
 import sys
-import xmlrunner
 sys.path.append('../src/')
 import number_play
 
@@ -46,10 +45,22 @@ def run_tests_2():
     unittest.TextTestRunner(verbosity=1).run(suite)
 
 def run_tests_3():
+    # this works but needs another repo to be added to the jenkins instance to work
+    import xmlrunner
     suite = unittest.TestLoader().loadTestsFromTestCase(MiscTests)
     #runner = xmlrunner.XMLTestRunner(sys.stdout)
     runner = xmlrunner.XMLTestRunner('./output/')
     runner.run(suite)
 
+def run_tests_4():
+    # works and doesn't need an extra repo to be added to the jenkins instance
+    import junitxml
+    with open('./output/TEST-MiscTests.xml', 'w') as test_output:
+        result = junitxml.JUnitXmlResult(test_output)
+        result.startTestRun()
+        suite = unittest.TestLoader().loadTestsFromTestCase(MiscTests)
+        suite.run(result)
+        result.stopTestRun()
+
 if __name__ == '__main__':
-    run_tests_3()
+    run_tests_4()
