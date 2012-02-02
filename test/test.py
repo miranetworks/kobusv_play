@@ -3,7 +3,8 @@
 import random
 import unittest
 import sys
-sys.path.append('../src/')
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), os.pardir, 'src'))
 import number_play
 
 class MiscTests(unittest.TestCase):
@@ -55,7 +56,7 @@ def run_tests_3():
 def run_tests_4():
     # works and doesn't need an extra repo to be added to the jenkins instance
     import junitxml
-    with open('./output/TEST-MiscTests.xml', 'w') as test_output:
+    with open(os.path.join(os.path.dirname(__file__), 'output/TEST-MiscTests.xml'), 'w') as test_output:
         result = junitxml.JUnitXmlResult(test_output)
         result.startTestRun()
         suite = unittest.TestLoader().loadTestsFromTestCase(MiscTests)
