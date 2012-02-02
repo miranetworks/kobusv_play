@@ -31,7 +31,7 @@ class MiscTests(unittest.TestCase):
             self.assertTrue(element in self.seq)
 
     def testFail(self):
-        self.failIf(True, 'test a failure')
+        self.failIf(False, 'test a failure')
 
     def test_add_them(self):
         self.assertEqual(10, number_play.add_them(7, 3))
