@@ -1,5 +1,10 @@
 #!/bin/bash
 
 cd test/
-python ../test/test.py
+#python ../test/test.py
+nosetests --with-xunit --xunit-file output/nosetests.xml --with-xcoverage --xcoverage-file=output/coverage.xml
 cd -
+
+#python-coverage erase
+#python-coverage run test/test.py
+#python-coverage report src/*.py

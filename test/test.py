@@ -32,20 +32,20 @@ class MiscTests(unittest.TestCase):
             self.assertTrue(element in self.seq)
 
     def testFail(self):
-        self.failIf(False, 'test a failure')
+        self.failIf(True, 'test a failure')
 
     def test_add_them(self):
         self.assertEqual(10, number_play.add_them(7, 3))
         self.assertEqual(11, number_play.add_them(-7, 18))
 
-def run_tests_1():
+def runtests_1():
     unittest.main()
 
-def run_tests_2():
+def runtests_2():
     suite = unittest.TestLoader().loadTestsFromTestCase(MiscTests)
     unittest.TextTestRunner(verbosity=1).run(suite)
 
-def run_tests_3():
+def runtests_3():
     # this works but needs another repo to be added to the jenkins instance to work
     import xmlrunner
     suite = unittest.TestLoader().loadTestsFromTestCase(MiscTests)
@@ -53,7 +53,7 @@ def run_tests_3():
     runner = xmlrunner.XMLTestRunner('./output/')
     runner.run(suite)
 
-def run_tests_4():
+def runtests_4():
     # works and doesn't need an extra repo to be added to the jenkins instance
     import junitxml
     with open(os.path.join(os.path.dirname(__file__), 'output/TEST-MiscTests.xml'), 'w') as test_output:
@@ -64,4 +64,4 @@ def run_tests_4():
         result.stopTestRun()
 
 if __name__ == '__main__':
-    run_tests_4()
+    runtests_4()
