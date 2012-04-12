@@ -1,0 +1,6 @@
+{
+  "foo": {
+    "dest": "/tmp"
+  },
+  "run_list": [ "recipe[getting-started]" ]
+}

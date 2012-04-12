@@ -1,5 +1,7 @@
 #!/bin/bash
 
+/bin/bash ./chef/run_chef-solo.sh
+
 cd test/
 #python ../test/test.py
 nosetests --with-xunit --xunit-file output/nosetests.xml --with-xcoverage --xcoverage-file=output/coverage.xml
