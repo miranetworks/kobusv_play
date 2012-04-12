@@ -1,6 +1,6 @@
 {
   "foo": {
-    "dest": "/tmp"
+    "dest": "/home/ubuntu"
   },
   "run_list": [ "recipe[getting-started]" ]
 }
