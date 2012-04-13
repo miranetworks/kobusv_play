@@ -3,10 +3,6 @@
 /bin/bash ./chef/run_chef-solo.sh
 
 cd test/
-#python ../test/test.py
-nosetests --with-xunit --xunit-file output/nosetests.xml --with-xcoverage --xcoverage-file=output/coverage.xml
+nosetests --cover-erase --with-xunit --xunit-file output/nosetests.xml --with-xcoverage
+python-coverage xml -o output/coverage.xml $(find ../src/ -type f -name \*.py | while read P; do readlink -f $P; done | tr "\n" " ")
 cd -
-
-#python-coverage erase
-#python-coverage run test/test.py
-#python-coverage report src/*.py
